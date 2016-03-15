@@ -65,7 +65,7 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             name_txt.frame.origin.y =  name_txt.frame.origin.y + 15
             
             
-            name_txt.font = UIFont(name: "SystemFont", size: 19)
+            name_txt.font = UIFont(name:(name_txt.font?.fontName)!, size: 19)
             
             
             email_txt.frame.size.width = 500
@@ -76,7 +76,7 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             
             email_txt.frame.origin.y =  email_txt.frame.origin.y + 30
             
-            email_txt.font = UIFont(name: "SystemFont", size: 19)
+            email_txt.font = UIFont(name:(email_txt.font?.fontName)! , size: 19)
             
             mobile_txt.frame.size.width = 500
             
@@ -86,7 +86,7 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             
             mobile_txt.frame.origin.y =  mobile_txt.frame.origin.y + 45
             
-            mobile_txt.font = UIFont(name: "SystemFont", size: 19)
+            mobile_txt.font = UIFont(name: (mobile_txt.font?.fontName)!, size: 19)
             
         
             desc_txt.frame.size.width = 500
@@ -97,7 +97,7 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             
             desc_txt.frame.origin.y =  desc_txt.frame.origin.y + 60
             
-            desc_txt.font = UIFont(name: "SystemFont", size: 19)
+            desc_txt.font = UIFont(name: (desc_txt.font?.fontName)!, size: 19)
             
             
             submit_btn.frame.size.width = 560
@@ -109,7 +109,7 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             submit_btn.frame.origin.y =  submit_btn.frame.origin.y + 90
             
             
-            submit_btn.titleLabel?.font = UIFont(name: "SystemFont", size: 19)
+            submit_btn.titleLabel?.font = UIFont(name: (submit_btn.titleLabel?.font.fontName)!, size: 19)
             
             
             user_img.frame.size.width = 45

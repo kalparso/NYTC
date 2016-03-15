@@ -25,38 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NYTC/loginViewController.swift"
-            timestampString = "479709902.924261"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
-            landmarkName = "tapLogin_btn(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NYTC/loginViewController.swift"
-            timestampString = "479456638.825752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "tapLogin_btn(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "NYTC/signUpViewController.swift"
             timestampString = "479632402.402651"
             startingColumnNumber = "9223372036854775807"
@@ -97,6 +65,38 @@
             endingLineNumber = "254"
             landmarkName = "tapSubmit_btn(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NYTC.changePassViewController.tapSubmit_btn (NYTC.changePassViewController)(Swift.AnyObject) -&gt; ()"
+                  moduleName = "NYTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/promatics/Desktop/NYTC%20latest:12march/NYTC/changePassViewController.swift"
+                  timestampString = "479734387.661178"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "254"
+                  endingLineNumber = "254"
+                  offsetFromSymbolStart = "7036">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NYTC.changePassViewController.(tapSubmit_btn (NYTC.changePassViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #3)"
+                  moduleName = "NYTC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/promatics/Desktop/NYTC%20latest:12march/NYTC/changePassViewController.swift"
+                  timestampString = "479734387.662215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -249,13 +249,13 @@
                   symbolName = "NYTC.advanceSearchViewController.tapAdvanceSearch (NYTC.advanceSearchViewController)(Swift.AnyObject) -&gt; ()"
                   moduleName = "NYTC"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/promatics/Desktop/NYTC%20latest:11march/NYTC/advanceSearchViewController.swift"
-                  timestampString = "479641110.975936"
+                  urlString = "file:///Users/promatics/Desktop/NYTC%20latest:12march/NYTC/advanceSearchViewController.swift"
+                  timestampString = "479734387.723975"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "549"
                   endingLineNumber = "549"
-                  offsetFromSymbolStart = "16473">
+                  offsetFromSymbolStart = "14613">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -264,13 +264,13 @@
                   symbolName = "NYTC.advanceSearchViewController.(tapAdvanceSearch (NYTC.advanceSearchViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #3)"
                   moduleName = "NYTC"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/promatics/Desktop/NYTC%20latest:11march/NYTC/advanceSearchViewController.swift"
-                  timestampString = "479641110.9762"
+                  urlString = "file:///Users/promatics/Desktop/NYTC%20latest:12march/NYTC/advanceSearchViewController.swift"
+                  timestampString = "479734387.724495"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "551"
                   endingLineNumber = "551"
-                  offsetFromSymbolStart = "46">
+                  offsetFromSymbolStart = "54">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NYTC/mySavingsViewController.swift"
-            timestampString = "479381917.210555"
+            timestampString = "479743310.761796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -441,22 +441,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NYTC/loginViewController.swift"
-            timestampString = "479709902.924261"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "tapFb_btn(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "NYTC/searchRestaurantViewController.swift"
             timestampString = "479633958.586216"
             startingColumnNumber = "9223372036854775807"
@@ -474,12 +458,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NYTC/loginViewController.swift"
-            timestampString = "479709902.924261"
+            timestampString = "479736199.950323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
-            landmarkName = "tapFb_btn(_:)"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
+            landmarkName = "getFBUserData()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYTC/loginViewController.swift"
+            timestampString = "479736199.950323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
+            landmarkName = "facebookLogin(_:name:fb_id:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NYTC/loginViewController.swift"
+            timestampString = "479736199.950323"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
+            landmarkName = "facebookLogin(_:name:fb_id:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

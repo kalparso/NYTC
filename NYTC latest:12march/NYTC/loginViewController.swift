@@ -126,7 +126,7 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             
             //authentic_img.frame.origin.y = authentication_txt.frame.origin.y
             
-            forgot_btn.frame.origin.x = authentication_txt.frame.origin.x + authentication_txt.frame.size.width - forgot_btn.frame.size.width
+            forgot_btn.frame.origin.x = password_txt.frame.origin.x + password_txt.frame.size.width - forgot_btn.frame.size.width
             
             forgot_btn.frame.origin.y = forgot_btn.frame.origin.y+60
             
@@ -293,9 +293,9 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
             
             var passDict = [String:AnyObject]()
         
-            passDict = ["email":email_txt.text!,"password":password_txt.text!,"device_id":deviceId!,"activation_key":""]
+            //passDict = ["email":email_txt.text!,"password":password_txt.text!,"device_id":deviceId!,"activation_key":""]
             
-           // passDict = ["email":email_txt.text!,"password":password_txt.text!,"device_id":deviceId!]
+            passDict = ["email":email_txt.text!,"password":password_txt.text!,"device_id":deviceId!]
                 
             loginConn.startConnectionWithString("login", httpMethodType:Post_Type, httpBodyType:passDict) { [unowned self] (receivedData) -> Void in
                     
@@ -332,7 +332,11 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
                                 
                             self.performSegueWithIdentifier("login", sender: self)
                                 
-                            } else {
+                            } else if result_code == "2"{
+                                
+                                self.getAuthenticationCode()
+                                
+                            }else{
                             
                             print(arr?.valueForKey("message") as? String)
                                 
@@ -361,9 +365,124 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
                     
         }
 }
+    
+    func getAuthenticationCode(){
+        
+        
+        let viewWithText = UIAlertController(title:"NYTC", message:"Please provide authentication code", preferredStyle:.Alert)
+        
+        viewWithText.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            
+            textField.placeholder = "Authentication Code"
+        }
+        
+        viewWithText.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+            
+        }))
+        
+        viewWithText.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            
+            let textField = viewWithText.textFields![0]
+            
+            if(textField.text != nil){
+                
+                self.LoginWithAuthentication(textField.text!)
+                
+            }
+            
+        }))
+        
+        
+        self.presentViewController(viewWithText, animated: true, completion:nil)
+        
+    }
+    
+    func LoginWithAuthentication(code:String){
+        
+        print( NSUserDefaults.standardUserDefaults().valueForKey("device_ID"))
+        
+        //email,password,device_id,activation_key
+        let deviceId = NSUserDefaults.standardUserDefaults().valueForKey("device_ID")
+        
+        
+        self.indicator.hidden = false
+        
+        self.indicator.startAnimating()
+        
+        var passDict = [String:AnyObject]()
+        
+        //passDict = ["email":email_txt.text!,"password":password_txt.text!,"device_id":deviceId!,"activation_key":""]
+        
+        passDict = ["email":email_txt.text!,"device_id":deviceId!,"activation_key":code]
+        
+        loginConn.startConnectionWithString("login", httpMethodType:Post_Type, httpBodyType:passDict) { [unowned self] (receivedData) -> Void in
+            
+            print(receivedData)
+            
+            self.indicator.stopAnimating()
+            
+            self.indicator.hidden = true
+            
+            if self.loginConn.responseCode() == 1 {
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    
+                    var arr:NSDictionary?
+                    
+                    arr = receivedData
+                    
+                    var userDict:NSDictionary?
+                    
+                    
+                    //This mail id not Registered.Please create your account
+                    
+                    let result_code = arr?.valueForKey("response") as? String
+                    
+                    self.message = (arr?.valueForKey("message") as? String)!
+                    
+                    if result_code == "1" {
+                        
+                        userDict = arr?.valueForKey("result")?.valueForKey("User") as! NSDictionary!
+                        
+                        NSUserDefaults.standardUserDefaults().setObject(userDict, forKey: "userData")
+                        
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "login")
+                        
+                        self.performSegueWithIdentifier("login", sender: self)
+                        
+                    } else{
+                        
+                        print(arr?.valueForKey("message") as? String)
+                        
+                        
+                        let alert = UIAlertController(title: "NYTC", message:self.message, preferredStyle: .Alert)
+                        let action = UIAlertAction(title: "OK", style: .Default) { _ in
+                            
+                            self.getAuthenticationCode()
+                            
+                        }
+                        alert.addAction(action)
+                        self.presentViewController(alert, animated: true){}
+                        
+                    }
+                    
+                    // var num = arr?.valueForKey("data") as? NSNumber
+                    
+                    
+                    self.indicator.stopAnimating()
+                    
+                    self.indicator.hidden = true
+                    
+                })
+                
+            }
+        }
+    }
+    
   
     
     @IBAction func tapFb_btn(sender: AnyObject) {
+        
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         
         fbLoginManager .logInWithReadPermissions(["email"], handler: { (result, error) -> Void in
@@ -386,14 +505,105 @@ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)  {
         
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                
                 if (error == nil){
-                    print(result)
+                   
+                   let arr:NSDictionary = result as! NSDictionary
                     
+                    let email = arr.valueForKey("email") as! String
+                    
+                   let name = arr.valueForKey("name") as! String
+                    
+                   let fb_id = arr.valueForKey("id") as! String
+                    
+                    
+                    self.facebookLogin(email,name:name,fb_id:fb_id)
+                   
                     
                 }
             })
         }
         
+    }
+    
+  
+    func facebookLogin(email:String,name:String,fb_id:String){
+        
+        let deviceId = NSUserDefaults.standardUserDefaults().valueForKey("device_ID")
+        
+        
+        self.indicator.hidden = false
+        
+        self.indicator.startAnimating()
+        
+        var passDict = [String:AnyObject]()
+        
+        //passDict = ["email":email_txt.text!,"password":password_txt.text!,"device_id":deviceId!,"activation_key":""]
+        
+        passDict = ["email":email,"device_id":deviceId!,"name":name,"id":fb_id]
+        
+        loginConn.startConnectionWithString("fbLogin", httpMethodType:Post_Type, httpBodyType:passDict) { [unowned self] (receivedData) -> Void in
+            
+            print(receivedData)
+            
+            self.indicator.stopAnimating()
+            
+            self.indicator.hidden = true
+            
+            if self.loginConn.responseCode() == 1 {
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    
+                    var arr:NSDictionary?
+                    
+                    arr = receivedData
+                    
+                    var userDict:NSDictionary?
+                    
+                    
+                    //This mail id not Registered.Please create your account
+                    
+                    let result_code = arr?.valueForKey("response") as? String
+                    
+                    self.message = (arr?.valueForKey("message") as? String)!
+                    
+                    if result_code == "1" {
+                        
+                        userDict = arr?.valueForKey("result")?.valueForKey("User") as! NSDictionary!
+                        
+                        NSUserDefaults.standardUserDefaults().setObject(userDict, forKey: "userData")
+                        
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "login")
+                        
+                        self.performSegueWithIdentifier("login", sender: self)
+                        
+                    } else{
+                        
+                        print(arr?.valueForKey("message") as? String)
+                        
+                        
+                        let alert = UIAlertController(title: "NYTC", message:self.message, preferredStyle: .Alert)
+                        let action = UIAlertAction(title: "OK", style: .Default) { _ in
+                            
+                            //self.getAuthenticationCode()
+                            
+                        }
+                        alert.addAction(action)
+                        self.presentViewController(alert, animated: true){}
+                        
+                    }
+                    
+                    // var num = arr?.valueForKey("data") as? NSNumber
+                    
+                    
+                    self.indicator.stopAnimating()
+                    
+                    self.indicator.hidden = true
+                    
+                })
+        
+            }
+        }
     }
 
 }

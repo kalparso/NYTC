@@ -767,17 +767,29 @@ class RestaurentDetailsViewController: UIViewController,UIScrollViewDelegate {
     }
     
     @IBAction func tapTrack_btn(sender: AnyObject) {
-        
-        
+      
+    self.performSegueWithIdentifier("trackSaving", sender: self)
+
     }
  
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
        
+        if segue.identifier == "feedBack"{
+        
         let feedBackVc = segue.destinationViewController as! feedBackQuesViewController
         
         feedBackVc.rest_id = getRestData?.valueForKey("RestaurantInformation")?.valueForKey("id") as? String
+            
+        } else  if segue.identifier == "trackSaving"{
+            
+            let trackSavingVc = segue.destinationViewController as! trackSavingViewController
+            
+            trackSavingVc.rest_id = getRestData?.valueForKey("RestaurantInformation")?.valueForKey("id") as? String
+
+            
+        }
         
         //feedBackVc.rest_id = getRestData?.valueForKey("")
     }
